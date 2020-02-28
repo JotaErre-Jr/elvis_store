@@ -10,6 +10,9 @@
       $subject = $_POST ['subject'];
       $text = $_POST ['elvismail'];
 
+      if(!empty($subject)){
+        if(!empty($text)){
+
       $dbc = mysqli_connect('localhost', 'root', '', 'elvis_store')
       or die('Erro ao se conectar ao servidor MYSQL');
 
@@ -28,6 +31,8 @@
       }
 
       mysqli_close($dbc);
+    }
+  }
      ?>
   </body>
 </html>
