@@ -10,29 +10,31 @@
       $subject = $_POST ['subject'];
       $text = $_POST ['elvismail'];
 
-      if(!empty($subject)){
-        if(!empty($text)){
+      if((!empty($subject)) && (!empty($text))){
 
-      $dbc = mysqli_connect('localhost', 'root', '', 'elvis_store')
-      or die('Erro ao se conectar ao servidor MYSQL');
+          $dbc = mysqli_connect('localhost', 'root', '', 'elvis_store')
+          or die('Erro ao se conectar ao servidor MYSQL');
 
-      $query = "SELECT * FROM email_list";
-      $result = mysqli_query($dbc, $query)
-      or die('Erro ao consultar o banco de dados');
+          $query = "SELECT * FROM email_list";
+          $result = mysqli_query($dbc, $query)
+          or die('Erro ao consultar o banco de dados');
 
-      while ($row = mysqli_fetch_array($result)) {
-        $first_name = $row['first_name'];
-        $last_name = $row['last_name'];
+          while ($row = mysqli_fetch_array($result)) {
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
 
-        $msg = "Dear $first_name $last_name, \n $text";
-        $to = $row['email'];
-        mail('$to', '$subject', '$msg', 'From: '.$from);
-        echo 'Email sent to: '.$to.'<br/>';
-      }
+            $msg = "Dear $first_name $last_name, \n $text";
+            $to = $row['email'];
+            mail('$to', '$subject', '$msg', 'From: '.$from);
+            echo 'Email sent to: '.$to.'<br/>';
+          }
 
-      mysqli_close($dbc);
-    }
-  }
+          mysqli_close($dbc);
+
+        }
+        else{
+          echo 'Preencha o campo em branco!';
+        }
      ?>
   </body>
 </html>
