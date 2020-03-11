@@ -47,7 +47,7 @@
       }
       if ($output_form) {
      ?>
-       <form class="" action="sendemail02.php" method="post">
+       <form class="" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
          <label for="subject">Subject of email:</label><br/>
          <input type="text" name="subject" value=""><br/>
 

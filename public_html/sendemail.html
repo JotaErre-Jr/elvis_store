@@ -7,7 +7,7 @@
   <body>
     <fieldset>
       <legend>Send your email here</legend>
-      <form class="" action="sendemail03.php" method="post">
+      <form class="" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="subject">Subject of email:</label><br/>
         <input type="text" name="subject" value=""><br/>
 
